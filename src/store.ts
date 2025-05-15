@@ -1,7 +1,6 @@
-import { create } from 'zustand'
+import { create } from 'zustand'
 import { OrderItem } from './types'
 import { Product } from '@prisma/client'
-
 
 interface Store {
     order: OrderItem[]
@@ -11,7 +10,6 @@ interface Store {
     removeItem: (id: Product['id']) => void
     clearOrder: () => void
 }
-
 
 export const useStore = create<Store>((set, get) => ({
     order: [],
@@ -50,7 +48,6 @@ export const useStore = create<Store>((set, get) => ({
             quantity: item.quantity - 1,
             subtotal: item.price * (item.quantity - 1)
         } : item )
-
 
         set(() => ({
             order
